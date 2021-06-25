@@ -1,3 +1,9 @@
 {
-    
+    "level": {
+        "level": "레벨",
+        "unsolve": "미해결",
+        "solve": "해결",
+        "count": "문제 수",
+        "progress": "진행도"
+    }
 }

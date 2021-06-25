@@ -5,6 +5,11 @@ module.exports = {
             template: './public/index.html',
             filename: 'index.html',
         },
+        level: {
+            entry: './src/pages/level/main.js',
+            template: './public/index.html',
+            filename: 'level.html',
+        },
     },
     outputDir: '/dist',
     lintOnSave: false,
@@ -13,7 +18,7 @@ module.exports = {
     devServer: {
         proxy: {
             '/api': {
-                target: 'http://localhost:3000',
+                target: 'http://localhost:3210',
             },
         },
     },

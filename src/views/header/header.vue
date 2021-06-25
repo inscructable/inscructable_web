@@ -1,6 +1,6 @@
 <template lang="pug">
 div.rn-header
-    rntxt(init_message="inscructable web", :init_fontSize="20")
+    rntxt(init_message="inscrutable web", :init_fontSize="20")
 </template>
 
 <script>
