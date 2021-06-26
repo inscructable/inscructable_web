@@ -2,17 +2,17 @@ module.exports = {
     pages: {
         index: {
             entry: './src/pages/index/main.js',
-            template: './public/index.html',
+            template: './public/template.html',
             filename: 'index.html',
         },
         level: {
             entry: './src/pages/level/main.js',
-            template: './public/index.html',
+            template: './public/template.html',
             filename: 'level.html',
         },
         level_detail: {
             entry: './src/pages/level-detail/main.js',
-            template: './public/index.html',
+            template: './public/template.html',
             filename: 'level_detail.html',
         },
     },
