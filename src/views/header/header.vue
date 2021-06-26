@@ -1,6 +1,7 @@
 <template lang="pug">
 header.rn-header
-    rntxt(init_message="inscrutable web", :init_fontSize="20")
+    a.rn-no-deco(href="/")
+        rntxt.rn-centre(init_message="inscrutable plus", :init_fontSize="30")
 </template>
 
 <script>
@@ -18,6 +19,13 @@ export default {
 .rn-header {
     width: 100%;
     height: 50px;
+    text-align: center;
     border-bottom: 1px solid #ececec;
+}
+.rn-centre {
+    line-height: 51px;
+}
+.rn-no-deco {
+    text-decoration: none;
 }
 </style>

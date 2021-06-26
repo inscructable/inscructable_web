@@ -1,6 +1,5 @@
 <template lang="pug">
 section.level-detail-section
-    | sec
 </template>
 
 <script>

@@ -7,7 +7,7 @@ table.level-table
     tbody.level-table-body
         tr(v-for="(row, rkey) in tableItems" :key="rkey")
             td
-                a.level-table-link(:href="'#'")
+                a.level-table-link(:href="`/level/${row[0]}`")
                     img.tier-img(:src="`https://static.solved.ac/tier_small/${row[0]}.svg`")
                     |  
                     rntxt.tier-label(v-if="row[0] > 0" :init_message="tier[Math.floor((row[0] - 1) / 5)] + ' ' + tierNum[(row[0] - 1) % 5]" :init_fontSize="16" :init_color="tierColor[Math.floor((row[0] - 1) / 5)]")
@@ -83,6 +83,7 @@ export default {
 <style lang="scss" scoped>
 .level-table {
     width: 100%;
+    text-align: left;
     border-spacing: 0px;
 }
 .tier-img {
@@ -92,6 +93,10 @@ export default {
 }
 .level-table-head {
     height: 41px;
+    th {
+        padding: 8px 12px;
+        box-sizing: border-box;
+    }
 }
 .level-table-body {
     tr {
