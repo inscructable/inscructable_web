@@ -1,5 +1,5 @@
 <template lang="pug">
-div.level-section
+section.level-section
     div.level-table-wrapper
         level-table
 </template>

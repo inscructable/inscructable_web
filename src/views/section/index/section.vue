@@ -1,5 +1,5 @@
 <template lang="pug">
-div.index-section
+section.index-section
     button(@click="onClick") btn
 </template>
 

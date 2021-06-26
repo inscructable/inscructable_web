@@ -1,7 +1,7 @@
 <template lang="pug">
-div.rn-footer
+footer.rn-footer
     div.vertical-frame
-        rntxt(init_message="footer.temp")
+        rntxt(init_message="footer.temp" :init_color="'#ececec'")
 </template>
 
 <script>

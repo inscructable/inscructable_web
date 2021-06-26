@@ -10,8 +10,13 @@ module.exports = {
             template: './public/index.html',
             filename: 'level.html',
         },
+        level_detail: {
+            entry: './src/pages/level-detail/main.js',
+            template: './public/index.html',
+            filename: 'level_detail.html',
+        },
     },
-    outputDir: '/dist',
+    outputDir: './dist',
     lintOnSave: false,
     filenameHashing: false,
 

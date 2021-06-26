@@ -1,5 +1,5 @@
 <template lang="pug">
-div.rn-header
+header.rn-header
     rntxt(init_message="inscrutable web", :init_fontSize="20")
 </template>
 
