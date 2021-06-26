@@ -17,7 +17,7 @@ const app = express();
 app.use(express.urlencoded( {extended : false } ));
 
 // Don't redirect if the hostname is `localhost:port` or the route is `/insecure`
-app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
+// app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'dist'));
