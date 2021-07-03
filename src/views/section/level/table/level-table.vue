@@ -78,10 +78,8 @@ export default {
                 return res.data.result;
             })
             .then(list => {
-                console.log('list:', list)
                 for (let i = 0; i <= 30; ++i) {
                     this.tableItems.push([i, list[i].todo, list[i].solved, list[i].all, list[i].progress]);
-                    console.log('tableItems[i]', this.tableItems[i]);
                 }
             })
             .catch(err => {
