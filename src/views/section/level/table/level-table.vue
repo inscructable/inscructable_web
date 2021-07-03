@@ -72,6 +72,22 @@ export default {
             for (let i = 0; i <= 30; ++i) {
                 this.tableItems.push([i, 0, 0, 0, 0]);
             }
+            axios.get('/api/teamstatistics', {
+                params: {
+                    team: 3,
+                },
+            })
+            .then(res => {
+                return res.data.result;
+            })
+            .then(list => {
+                for (let i = 0; i < list.length; ++i) {
+                    this.tableItems[i] = [i, list[i].todo, list[i].solved, list[i].all, list[i].progress];
+                }
+            })
+            .catch(err => {
+                console.log('err', err);
+            });
         },
     },
     created: function() {
@@ -83,7 +99,6 @@ export default {
 <style lang="scss" scoped>
 .level-table {
     width: 100%;
-    text-align: left;
     border-spacing: 0px;
 }
 .tier-img {
@@ -93,10 +108,6 @@ export default {
 }
 .level-table-head {
     height: 41px;
-    th {
-        padding: 8px 12px;
-        box-sizing: border-box;
-    }
 }
 .level-table-body {
     tr {

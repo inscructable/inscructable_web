@@ -12,5 +12,11 @@
         "solve": "해결",
         "count": "문제 수",
         "progress": "진행도"
+    },
+    "level-detail": {
+        "id": "#",
+        "title": "제목",
+        "solve": "해결",
+        "avg": "평균 시도"
     }
 }
