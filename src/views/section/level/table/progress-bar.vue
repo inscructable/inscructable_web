@@ -56,7 +56,7 @@ export default {
 .rn-progress-bar {
     width: 100%;
     height: 28px;
-    min-width: 300px;
+    min-width: 200px;
 }
 .rn-progress-bar-gauge {
     height: 28px;

@@ -140,6 +140,9 @@ export default {
         padding: 8px 12px;
         box-sizing: border-box;
     }
+    td:nth-child(1) {
+        min-width: 145px;
+    }
     tr:nth-child(odd) {
         background-color: #ececec;
         td:nth-child(1) {
