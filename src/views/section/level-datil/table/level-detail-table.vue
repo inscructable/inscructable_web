@@ -5,19 +5,20 @@ table.level-detail-table
             th(v-for="(item, key) in headItems" :key="key")
                 rntxt(:init_message="item" :init_fontSize="16" :init_fontWeight="900")
     tbody.level-detail-table-body
-        tr(v-for="(row, rkey) in tableItems" :key="rkey")
+        tr(v-for="(row, rkey) in tableItems.slice(50 * page, 50 * (page + 1))" :key="rkey")
             td
                 a.level-detail-table-link(:href="`https://www.acmicpc.net/problem/${row[0]}`")
                     img.tier-img(:src="`https://static.solved.ac/tier_small/${level}.svg`")
                     |  
                     rntxt(:init_message="row[0]" :init_fontSize="14")
-            td(v-for="(item, key) in row.slice(1)" :key="key")
+            td
+                a.level-detail-table-link(:href="`https://www.acmicpc.net/problem/${row[0]}`")
+                    rntxt(:init_message="row[1]", :init_fontSize="14")
+            td(v-for="(item, key) in row.slice(2)" :key="key")
                 rntxt(:init_message="item", :init_fontSize="14")
 </template>
 
 <script>
-import axios from 'axios';
-
 import rntxt from '../../../components/rntxt.vue';
 
 export default {
@@ -26,10 +27,22 @@ export default {
         init_level: {
             default: 0,
         },
+        init_page: {
+            default: 0,
+        },
+        init_items: {
+            default: [],
+        },
     },
     watch: {
+        init_page: function() {
+            this.page = this.init_page;
+        },
         init_level: function() {
             this.level = this.init_level;
+        },
+        init_items: function() {
+            this.tableItems = this.init_items
         },
     },
     components: {
@@ -47,22 +60,12 @@ export default {
     },
     data: function() {
         return {
-            tableItems: [],
+            page: this.init_page,
             level: this.init_level,
+            tableItems: this.init_items
         };
     },
-    methods: {
-        setData: function() {
-            this.tableItems = [
-                [1000, 'A+B', 129898, 2.30],
-                [1001, 'A-B', 107062, 1.39],
-                [1271, '엄청난 무자2', 3361, 3.05],
-            ];
-        },
-    },
-    created: function() {
-        this.setData();
-    },
+    
 }
 </script>
 

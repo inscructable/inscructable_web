@@ -6,10 +6,12 @@ section.level-detail-section
         rntxt.tier-label(v-if="level > 0" :init_message="tier[Math.floor((level - 1) / 5)] + ' ' + tierNum[(level - 1) % 5]" :init_fontSize="32" :init_color="tierColor[Math.floor((level - 1) / 5)]")
         rntxt.tier-label(v-else :init_message="unrated" :init_fontSize="32" :init_color="'#9c9c9c'")
     div.level-detail-table-wrapper
-        level-detail-table(:init_level="level")
+        level-detail-table(:init_level="level" :init_page="page" :init_items="items")
 </template>
 
 <script>
+import axios from 'axios';
+
 import rntxt from '../../components/rntxt.vue';
 import LevelDetailTable from './table/level-detail-table.vue';
 
@@ -45,13 +47,37 @@ export default {
                 '#00b4fc',
                 '#ff0062',
             ],
+            page: 0,
             level: 0,
+            items: [],
         };
     },
     methods: {
         setData: function() {
             let pathname = window.location.pathname.split('/');
-            this.level = parseInt(pathname[pathname.length - 1]);
+            this.level = parseInt(pathname[pathname.length - 2]);
+            this.page = parseInt(pathname[pathname.length - 1]);
+            axios.get('/api/problem/unsolved', {
+                params: {
+                    team: 3,
+                    tier: this.level,
+                },
+            })
+            .then(res => {
+                return res.data.result
+            })
+            .then(list => {
+                this.items = [];
+                for (let i = 0; i < list.length; ++i) {
+                    this.items.push([list[i].problem_id, list[i].title, '?', '?']);
+                }
+                this.items.sort((a, b) => {
+                    return a[0] - b[0];
+                });
+            })
+            .catch(err => {
+                console.log('err', err);
+            });
         },
     },
     created: function() {

@@ -1,5 +1,5 @@
 <template lang="pug">
-div.level-root
+div.level-detail-root
     rn-header
     rn-section
     rn-footer

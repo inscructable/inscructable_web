@@ -32,10 +32,11 @@ router.get('/level', function(req, res, next) {
 /**
  * <b> Get Level Detail Page </b>
  */
- router.get('/level/:level', function(req, res, next) {
+ router.get('/level/:level/:page', function(req, res, next) {
     if (!isNaN(parseFloat(req.params.level)) && isFinite(req.params.level)) {
         var lv = parseInt(req.params.level);
-        if (lv >= 0 && lv <= 30) res.sendFile(path.join(__dirname, '..', 'dist', 'level_detail.html'));
+        var pg = parseInt(req.params.page);
+        if (lv >= 0 && lv <= 30 && pg >= 0) res.sendFile(path.join(__dirname, '..', 'dist', 'level_detail.html'));
         else next();
     } else next();
 });
