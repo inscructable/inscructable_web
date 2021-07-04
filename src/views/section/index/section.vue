@@ -11,7 +11,7 @@ section.index-section
             button.index-go-problem(@click="onClickLevel")
                 rntxt.rn-b(:init_message="$t('index.go-problem')" :init_fontSize="20")
         div.row3
-            rntxt.index-rank-label(:init_message="$t('index.hyu_ranking')" :init_fontSize="20" :init_fontWeight="700")
+            rntxt.index-rank-label(:init_message="$t('index.hyu_ranking')" :init_fontSize="20" :init_fontWeight="900")
             div.index-rank-table-wrapper
                 index-rank-table
 </template>

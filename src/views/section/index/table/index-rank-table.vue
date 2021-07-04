@@ -3,7 +3,7 @@ table.index-rank-table
     thead.index-rank-table-head
         tr
             th(v-for="(item, key) in headItems" :key="key")
-                rntxt(:init_message="item" :init_fontSize="16" :init_fontWeight="700")
+                rntxt(:init_message="item" :init_fontSize="16" :init_fontWeight="900")
     tbody.index-rank-table-body
         tr(v-for="(row, rkey) in userItems" :key="rkey")
             td
