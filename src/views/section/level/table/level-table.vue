@@ -12,19 +12,23 @@ table.level-table
                     |  
                     rntxt.tier-label(v-if="row[0] > 0" :init_message="tier[Math.floor((row[0] - 1) / 5)] + ' ' + tierNum[(row[0] - 1) % 5]" :init_fontSize="16" :init_color="tierColor[Math.floor((row[0] - 1) / 5)]")
                     rntxt.tier-label(v-else :init_message="unrated" :init_fontSize="16" :init_color="'#9c9c9c'")
-            td(v-for="(item, key) in row.slice(1)" :key="key")
+            td(v-for="(item, key) in row.slice(1, 4)" :key="key")
                 rntxt(:init_message="item", :init_fontSize="14")
+            td
+                progress-bar(:init_value="row[4]" :init_color="tierColor[Math.floor((row[0] - 1) / 5)]" :init_back="darkTierColor[Math.floor((row[0] - 1) / 5)]")
 </template>
 
 <script>
 import axios from 'axios';
 
+import ProgressBar from './progress-bar.vue';
 import rntxt from '../../../components/rntxt.vue';
 
 export default {
     name: 'level-table',
     components: {
         rntxt,
+        ProgressBar,
     },
     computed: {
         headItems: function() {
@@ -63,7 +67,15 @@ export default {
                 '#27e2a4',
                 '#00b4fc',
                 '#ff0062',
-            ]
+            ],
+            darkTierColor: [
+                '#331900',
+                '#141c21',
+                '#462e00',
+                '#094631',
+                '#00364b',
+                '#4c001d'
+            ],
         };
     },
     methods: {
