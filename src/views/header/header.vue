@@ -17,9 +17,13 @@ export default {
 
 <style lang="scss" scoped>
 .rn-header {
+    top: 0;
     width: 100%;
     height: 50px;
+    z-index: 9999;
+    position: sticky;
     text-align: center;
+    background-color: #ffffff;
     border-bottom: 1px solid #ececec;
 }
 .rn-centre {

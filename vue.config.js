@@ -23,7 +23,7 @@ module.exports = {
     devServer: {
         proxy: {
             '/api': {
-                target: 'http://localhost:3210',
+                target: 'http://inscrutable.kro.kr',
             },
         },
     },

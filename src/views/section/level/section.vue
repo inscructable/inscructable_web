@@ -22,7 +22,8 @@ export default {
     box-sizing: border-box;
 }
 .level-table-wrapper {
-    min-width: 480px;
+    width: 100%;
+    overflow-x: auto;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;

@@ -84,6 +84,9 @@ export default {
             })
             .catch(err => {
                 console.log('err', err);
+                for (let i = 0; i <= 30; ++i) {
+                    this.tableItems.push([i, 0, 0, 0, 0]);
+                }
             });
         },
     },
@@ -96,6 +99,7 @@ export default {
 <style lang="scss" scoped>
 .level-table {
     width: 100%;
+    min-width: 480px;
     border-spacing: 0px;
 }
 .tier-img {
@@ -105,6 +109,16 @@ export default {
 }
 .level-table-head {
     height: 41px;
+    tr {
+        th:nth-child(1) {
+            left: 0;
+            position: sticky;
+            background: linear-gradient(to right, rgb(255, 255, 255) 75%, rgba(255, 255, 255, 0));
+        }
+    }
+    th {
+        background-color: #ffffff;
+    }
 }
 .level-table-body {
     tr {
@@ -116,6 +130,19 @@ export default {
     }
     tr:nth-child(odd) {
         background-color: #ececec;
+        td:nth-child(1) {
+            left: 0;
+            position: sticky;
+            background: linear-gradient(to right, rgb(236, 236, 236) 75%, rgba(236, 236, 236, 0));
+        }
+    }
+    tr:nth-child(even) {
+        background-color: #ffffff;
+        td:nth-child(1) {
+            left: 0;
+            position: sticky;
+            background: linear-gradient(to right, rgb(255, 255, 255) 75%, rgba(255, 255, 255, 0));
+        }
     }
 }
 .level-table-link {

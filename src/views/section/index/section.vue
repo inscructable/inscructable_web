@@ -3,9 +3,9 @@ section.index-section
     div.content
         div.row1
             rntxt.rn-b(:init_message="$t('index.title1')" :init_fontSize="20")
-            |&nbsp;
+            br
             rntxt.rn-b(:init_message="$t('index.title2')" :init_fontSize="20")
-            |&nbsp;
+            br
             rntxt.rn-b(:init_message="$t('index.title3')" :init_fontSize="20")
         div.row2
             button.index-go-problem(@click="onClickLevel")
@@ -42,7 +42,7 @@ export default {
     box-sizing: border-box;
 }
 .content {
-    min-width: 480px;
+    min-width: 200px;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
@@ -75,10 +75,10 @@ export default {
     text-align: center;
 }
 .index-go-problem {
-    width: 400px;
-    height: 40px;
+    min-height: 40px;
     border: none;
     cursor: pointer;
+    padding: 10px 16px;
     border-radius: 10px;
     background-color: #cccccc;
     box-shadow: 5px 2px 2px #ececec;
