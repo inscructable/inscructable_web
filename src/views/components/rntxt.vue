@@ -25,7 +25,7 @@ export default {
             default: 12,
         },
         init_fontFamily: {
-            default: '',
+            default: 'NotoSans',
         },
         init_fontWeight: {
             default: 400,

@@ -29,4 +29,8 @@ html, body {
     overflow: hidden;
     position: absolute;
 }
+@font-face {
+    font-family: "NotoSans";
+    src: url(../../assets/NotoSans-Regular.ttf);
+}
 </style>
