@@ -11,21 +11,22 @@ section.index-section
             button.index-go-problem(@click="onClickLevel")
                 rntxt.rn-b(:init_message="$t('index.go-problem')" :init_fontSize="20")
         div.row3
-            rntxt.index-rank-label(:init_message="$t('index.weekly_ranking')" :init_fontSize="20" :init_fontWeight="700")
-            index-table
+            rntxt.index-rank-label(:init_message="$t('index.hyu_ranking')" :init_fontSize="20" :init_fontWeight="700")
+            div.index-rank-table-wrapper
+                index-rank-table
 </template>
 
 <script>
 import axios from 'axios';
 
 import rntxt from '../../components/rntxt.vue';
-import IndexTable from './table/index-table.vue';
+import IndexRankTable from './table/index-rank-table.vue';
 
 export default {
     name: 'index-section',
     components: {
         rntxt,
-        IndexTable,
+        IndexRankTable,
     },
     methods: {
         onClickLevel: function() {
@@ -82,5 +83,9 @@ export default {
     border-radius: 10px;
     background-color: #cccccc;
     box-shadow: 5px 2px 2px #ececec;
+}
+.index-rank-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
 }
 </style>

@@ -1,63 +1,50 @@
 <template lang="pug">
-table.level-detail-table
-    thead.level-detail-table-head
+table.index-rank-table
+    thead.index-rank-table-head
         tr
             th(v-for="(item, key) in headItems" :key="key")
                 rntxt(:init_message="item" :init_fontSize="16" :init_fontWeight="700")
-    tbody.level-detail-table-body
-        tr(v-for="(row, rkey) in tableItems" :key="rkey")
+    tbody.index-rank-table-body
+        tr(v-for="(row, rkey) in userItems" :key="rkey")
             td
-                a.level-detail-table-link(:href="`https://www.acmicpc.net/problem/${row[0]}`")
-                    img.tier-img(:src="`https://static.solved.ac/tier_small/${level}.svg`")
-                    |  
-                    rntxt(:init_message="row[0]" :init_fontSize="14")
+                rntxt(:init_message="rkey + 1 + ` (${row[0]})`" :init_fontSize="16")
             td(v-for="(item, key) in row.slice(1)" :key="key")
-                rntxt(:init_message="item", :init_fontSize="14")
+                rntxt(:init_message="item" :init_fontSize="16")
 </template>
 
 <script>
-import axios from 'axios';
-
 import rntxt from '../../../components/rntxt.vue';
 
 export default {
-    name: 'level-table',
-    props: {
-        init_level: {
-            default: 0,
-        },
-    },
-    watch: {
-        init_level: function() {
-            this.level = this.init_level;
-        },
-    },
+    name: 'index-table',
     components: {
         rntxt,
     },
     computed: {
         headItems: function() {
             return [
-                this.$t('level-detail.id'),
-                this.$t('level-detail.title'),
-                this.$t('level-detail.solve'),
-                this.$t('level-detail.avg'),
+                this.$t('index.rank'),
+                this.$t('index.handle'),
+                this.$t('index.rating'),
+                this.$t('index.class'),
+                this.$t('index.solved')
             ];
         },
     },
     data: function() {
         return {
-            tableItems: [],
-            level: this.init_level,
+            userItems: [],
         };
     },
     methods: {
         setData: function() {
-            this.tableItems = [
-                [1000, 'A+B', 129898, 2.30],
-                [1001, 'A-B', 107062, 1.39],
-                [1271, '엄청난 무자2', 3361, 3.05],
+            this.userItems = [
+                ['7', 'ingyu1008', '3801', '10++', '5882'],
+                ['128825', 'thak00', '210', '-', '15']
             ];
+            this.userItems.sort((a, b) => {
+                return parseInt(a[0]) - parseInt(b[0]);
+            });
         },
     },
     created: function() {
@@ -67,18 +54,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.level-detail-table {
+.index-rank-table {
     width: 100%;
     min-width: 480px;
     text-align: left;
     border-spacing: 0px;
 }
-.tier-img {
-    width: 1.2em;
-    height: 1.2em;
-    vertical-align: middle;
-}
-.level-detail-table-head {
+.index-rank-table-head {
     height: 41px;
     th {
         padding: 8px 12px;
@@ -90,7 +72,7 @@ export default {
         background: linear-gradient(to right, rgb(255, 255, 255) 75%, rgba(255, 255, 255, 0));
     }
 }
-.level-detail-table-body {
+.index-rank-table-body {
     tr {
         height: 44px;
     }
@@ -113,14 +95,6 @@ export default {
             position: sticky;
             background: linear-gradient(to right, rgb(255, 255, 255) 75%, rgba(255, 255, 255, 0));
         }
-    }
-}
-.level-detail-table-link {
-    text-decoration: none;
-    span {
-        top: 3px;
-        display: inline-block;
-        vertical-align: middle;
     }
 }
 </style>
