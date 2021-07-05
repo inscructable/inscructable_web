@@ -71,7 +71,7 @@ export default {
             .then(list => {
                 this.items = [];
                 for (let i = 0; i < list.length; ++i) {
-                    this.items.push([list[i].problem_id, list[i].title, list[i].solveCount, list[i].averageTry]);
+                    this.items.push([list[i].problem_id, list[i].title, list[i].solve_count, list[i].average_try]);
                 }
                 this.items.sort((a, b) => {
                     return a[0] - b[0];
