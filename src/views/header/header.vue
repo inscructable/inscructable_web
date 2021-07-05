@@ -23,8 +23,8 @@ export default {
     z-index: 9999;
     position: sticky;
     text-align: center;
-    background-color: #ffffff;
-    border-bottom: 1px solid #ececec;
+    background-color: #1e2122;
+    border-bottom: 1px solid #42494b;
 }
 .rn-centre {
     line-height: 51px;

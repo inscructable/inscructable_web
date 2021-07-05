@@ -10,10 +10,10 @@ table.level-detail-table
                 a.level-detail-table-link(:href="row[0] == '0000' ? '#' : `https://www.acmicpc.net/problem/${row[0]}`")
                     img.tier-img(:src="`https://static.solved.ac/tier_small/${level}.svg`")
                     |  
-                    rntxt(:init_message="row[0]" :init_fontSize="14")
+                    rntxt.tier-label(:init_message="row[0]" :init_fontSize="14")
             td
                 a.level-detail-table-link(:href="row[0] == '0000' ? '#' : `https://www.acmicpc.net/problem/${row[0]}`")
-                    rntxt(:init_message="row[1]", :init_fontSize="14")
+                    rntxt.tier-label(:init_message="row[1]", :init_fontSize="14")
             td(v-for="(item, key) in row.slice(2)" :key="key")
                 rntxt(:init_message="item", :init_fontSize="14")
 </template>
@@ -90,40 +90,33 @@ export default {
         left: 0;
         z-index: 2;
         position: sticky;
-        background: linear-gradient(to right, rgb(255, 255, 255) 75%, rgba(255, 255, 255, 0));
+        background: linear-gradient(90deg, rgb(30, 33, 34) 75%, rgba(30, 33, 34, 0))
     }
 }
 .level-detail-table-body {
     tr {
         height: 44px;
-        &:hover {
-            z-index: 99999;
-            background-color: rgba(0, 0, 0, 0.3) !important;
-            td {
-                background: none !important;
-            }
-        }
     }
     td {
         padding: 8px 12px;
         box-sizing: border-box;
     }
     tr:nth-child(odd) {
-        background-color: #ececec;
+        background-color: rgb(44, 48, 49);
         td:nth-child(1) {
             left: 0;
             z-index: 2;
             position: sticky;
-            background: linear-gradient(to right, rgb(236, 236, 236) 75%, rgba(236, 236, 236, 0));
+            background: linear-gradient(90deg, rgb(44, 48, 49) 75%, rgba(44, 48, 49, 0))
         }
     }
     tr:nth-child(even) {
-        background-color: #ffffff;
+        background-color: rgb(30, 33, 34);
         td:nth-child(1) {
             left: 0;
             z-index: 2;
             position: sticky;
-            background: linear-gradient(to right, rgb(255, 255, 255) 75%, rgba(255, 255, 255, 0));
+            background: linear-gradient(90deg, rgb(30, 33, 34) 75%, rgba(30, 33, 34, 0))
         }
     }
 }
@@ -133,6 +126,12 @@ export default {
         top: 3px;
         display: inline-block;
         vertical-align: middle;
+    }
+}
+.tier-label {
+    &:hover {
+        text-decoration: underline;
+        text-decoration-color: #fdf3f3;
     }
 }
 </style>

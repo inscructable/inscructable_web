@@ -16,7 +16,7 @@ export default {
     name: 'rntxt',
     props: {
         init_color: {
-            default: '#000000',
+            default: '#e8e6e3',
         },
         init_message: {
             default: '',

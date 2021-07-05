@@ -8,7 +8,10 @@ table.index-rank-table
         tr(v-for="(row, rkey) in userItems" :key="rkey")
             td
                 rntxt(:init_message="rkey + 1 + ` (${row[0]})`" :init_fontSize="16")
-            td(v-for="(item, key) in row.slice(1)" :key="key")
+            td
+                a.index-table-link(:href="`https://www.acmicpc.net/user/${row[1]}`")
+                    rntxt(:init_message="row[1]" :init_fontSize="16")
+            td(v-for="(item, key) in row.slice(2)" :key="key")
                 rntxt(:init_message="item" :init_fontSize="16")
 </template>
 
@@ -81,7 +84,7 @@ export default {
         left: 0;
         z-index: 2;
         position: sticky;
-        background: linear-gradient(to right, rgb(255, 255, 255) 75%, rgba(255, 255, 255, 0));
+        background: linear-gradient(90deg, rgb(30, 33, 34) 75%, rgba(30, 33, 34, 0))
     }
 }
 .index-rank-table-body {
@@ -93,22 +96,29 @@ export default {
         box-sizing: border-box;
     }
     tr:nth-child(odd) {
-        background-color: #ececec;
+        background-color: rgb(44, 48, 49);
         td:nth-child(1) {
             left: 0;
             z-index: 2;
             position: sticky;
-            background: linear-gradient(to right, rgb(236, 236, 236) 75%, rgba(236, 236, 236, 0));
+            background: linear-gradient(90deg, rgb(44, 48, 49) 75%, rgba(44, 48, 49, 0))
         }
     }
     tr:nth-child(even) {
-        background-color: #ffffff;
+        background-color: rgb(30, 33, 34);
         td:nth-child(1) {
             left: 0;
             z-index: 2;
             position: sticky;
-            background: linear-gradient(to right, rgb(255, 255, 255) 75%, rgba(255, 255, 255, 0));
+            background: linear-gradient(90deg, rgb(30, 33, 34) 75%, rgba(30, 33, 34, 0))
         }
+    }
+}
+.index-table-link {
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+        text-decoration-color: #fdf3f3;
     }
 }
 </style>

@@ -52,7 +52,7 @@ export default {
     padding: 32px;
     min-height: 300px;
     box-sizing: border-box;
-    background-color: #4f4f4f;
+    background-color: #4a5054;
 }
 .vertical-frame {
     width: 100%;

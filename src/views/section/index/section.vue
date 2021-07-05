@@ -81,8 +81,8 @@ export default {
     cursor: pointer;
     padding: 10px 16px;
     border-radius: 10px;
-    background-color: #cccccc;
-    box-shadow: 5px 2px 2px #ececec;
+    background-color: #35393b;
+    box-shadow: 5px 2px 2px #232627;
 }
 .index-rank-table-wrapper {
     width: 100%;

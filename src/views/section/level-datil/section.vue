@@ -3,12 +3,12 @@ section.level-detail-section
     div.level-detail-title
         img.tier-img(:src="`https://static.solved.ac/tier_small/${level}.svg`")
         |  
-        rntxt.tier-label(v-if="level > 0" :init_message="tier[Math.floor((level - 1) / 5)] + ' ' + tierNum[(level - 1) % 5]" :init_fontSize="32" :init_color="tierColor[Math.floor((level - 1) / 5)]")
-        rntxt.tier-label(v-else :init_message="unrated" :init_fontSize="32" :init_color="'#9c9c9c'")
+        rntxt.tier-label(v-if="level > 0" :init_message="$store.state.tier[Math.floor((level - 1) / 5)] + ' ' + $store.state.tierNum[(level - 1) % 5]" :init_fontSize="32" :init_color="$store.state.tierColor[Math.floor((level - 1) / 5)]")
+        rntxt.tier-label(v-else :init_message="$store.state.tierU" :init_fontSize="32" :init_color="$store.state.tierColorU")
     div.level-detail-table-wrapper
         level-detail-table(:init_level="level" :init_page="page" :init_items="items")
-    div.level-detail-pagination
-        |pagination
+    //- div.level-detail-pagination
+    //-     |pagination
 </template>
 
 <script>
@@ -25,30 +25,6 @@ export default {
     },
     data: function() {
         return {
-            unrated: 'Unrated',
-            tier: [
-                'Bronze',
-                'Silver',
-                'Gold',
-                'Platinum',
-                'Diamond',
-                'Ruby'
-            ],
-            tierNum: [
-                'V',
-                'IV',
-                'III',
-                'II',
-                'I',
-            ],
-            tierColor: [
-                '#ad5600',
-                '#435f7a',
-                '#ec9a00',
-                '#27e2a4',
-                '#00b4fc',
-                '#ff0062',
-            ],
             page: 0,
             level: 0,
             items: [],
