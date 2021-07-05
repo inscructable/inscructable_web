@@ -20,7 +20,7 @@ export default {
     top: 0;
     width: 100%;
     height: 50px;
-    z-index: 9999;
+    z-index: 9;
     position: sticky;
     text-align: center;
     background-color: #1e2122;
