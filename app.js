@@ -33,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/js', express.static(path.join(__dirname, 'dist', 'js')));
 app.use('/css', express.static(path.join(__dirname, 'dist', 'css')));
 app.use('/img', express.static(path.join(__dirname, 'dist', 'img')));
+app.use('/fonts', express.static(path.join(__dirname, 'dist', 'fonts')));
 
 app.use('/', indexRouter);
 
