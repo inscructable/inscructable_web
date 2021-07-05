@@ -7,6 +7,8 @@ section.level-detail-section
         rntxt.tier-label(v-else :init_message="unrated" :init_fontSize="32" :init_color="'#9c9c9c'")
     div.level-detail-table-wrapper
         level-detail-table(:init_level="level" :init_page="page" :init_items="items")
+    div.level-detail-pagination
+        |pagination
 </template>
 
 <script>
@@ -74,6 +76,9 @@ export default {
                 this.items.sort((a, b) => {
                     return a[0] - b[0];
                 });
+                if (list.length == 0) {
+                    this.items.push(['0000', 'All Clear!', '1', '1'])
+                }
             })
             .catch(err => {
                 console.log('err', err);
@@ -106,5 +111,11 @@ export default {
 .tier-img {
     width: 30px;
     height: 30px;
+}
+.level-detail-pagination {
+    width: 100%;
+    padding: 16px;
+    text-align: right;
+    box-sizing: border-box;
 }
 </style>

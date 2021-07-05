@@ -7,12 +7,12 @@ table.level-detail-table
     tbody.level-detail-table-body
         tr(v-for="(row, rkey) in tableItems.slice(50 * page, 50 * (page + 1))" :key="rkey")
             td
-                a.level-detail-table-link(:href="`https://www.acmicpc.net/problem/${row[0]}`")
+                a.level-detail-table-link(:href="row[0] == '0000' ? '#' : `https://www.acmicpc.net/problem/${row[0]}`")
                     img.tier-img(:src="`https://static.solved.ac/tier_small/${level}.svg`")
                     |  
                     rntxt(:init_message="row[0]" :init_fontSize="14")
             td
-                a.level-detail-table-link(:href="`https://www.acmicpc.net/problem/${row[0]}`")
+                a.level-detail-table-link(:href="row[0] == '0000' ? '#' : `https://www.acmicpc.net/problem/${row[0]}`")
                     rntxt(:init_message="row[1]", :init_fontSize="14")
             td(v-for="(item, key) in row.slice(2)" :key="key")
                 rntxt(:init_message="item", :init_fontSize="14")
@@ -65,7 +65,6 @@ export default {
             tableItems: this.init_items
         };
     },
-    
 }
 </script>
 
@@ -89,6 +88,7 @@ export default {
     }
     th:nth-child(1) {
         left: 0;
+        z-index: 2;
         position: sticky;
         background: linear-gradient(to right, rgb(255, 255, 255) 75%, rgba(255, 255, 255, 0));
     }
@@ -105,6 +105,7 @@ export default {
         background-color: #ececec;
         td:nth-child(1) {
             left: 0;
+            z-index: 2;
             position: sticky;
             background: linear-gradient(to right, rgb(236, 236, 236) 75%, rgba(236, 236, 236, 0));
         }
@@ -113,6 +114,7 @@ export default {
         background-color: #ffffff;
         td:nth-child(1) {
             left: 0;
+            z-index: 2;
             position: sticky;
             background: linear-gradient(to right, rgb(255, 255, 255) 75%, rgba(255, 255, 255, 0));
         }

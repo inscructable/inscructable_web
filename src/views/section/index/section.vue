@@ -50,8 +50,8 @@ export default {
 }
 .row1 {
     width: 100%;
-    height: 200px;
-    padding: 30px 0px;
+    height: 350px;
+    padding: 120px 0px;
     text-align: center;
     box-sizing: border-box;
 }

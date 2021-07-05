@@ -124,6 +124,7 @@ export default {
     tr {
         th:nth-child(1) {
             left: 0;
+            z-index: 2;
             position: sticky;
             background: linear-gradient(to right, rgb(255, 255, 255) 75%, rgba(255, 255, 255, 0));
         }
@@ -149,6 +150,7 @@ export default {
         background-color: #ececec;
         td:nth-child(1) {
             left: 0;
+            z-index: 2;
             position: sticky;
             background: linear-gradient(to right, rgb(236, 236, 236) 75%, rgba(236, 236, 236, 0));
         }
@@ -157,6 +159,7 @@ export default {
         background-color: #ffffff;
         td:nth-child(1) {
             left: 0;
+            z-index: 2;
             position: sticky;
             background: linear-gradient(to right, rgb(255, 255, 255) 75%, rgba(255, 255, 255, 0));
         }
