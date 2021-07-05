@@ -71,7 +71,7 @@ export default {
             .then(list => {
                 this.items = [];
                 for (let i = 0; i < list.length; ++i) {
-                    this.items.push([list[i].problem_id, list[i].title, '?', '?']);
+                    this.items.push([list[i].problem_id, list[i].title, list[i].solveCount, list[i].averageTry]);
                 }
                 this.items.sort((a, b) => {
                     return a[0] - b[0];
@@ -107,6 +107,9 @@ export default {
 .level-detail-title {
     height: 30px;
     margin: 22px 0;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .tier-img {
     width: 30px;
