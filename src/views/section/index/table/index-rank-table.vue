@@ -13,6 +13,8 @@ table.index-rank-table
 </template>
 
 <script>
+import axios from 'axios';
+
 import rntxt from '../../../components/rntxt.vue';
 
 export default {
@@ -38,12 +40,21 @@ export default {
     },
     methods: {
         setData: function() {
-            this.userItems = [
-                ['7', 'ingyu1008', '3801', '10++', '5882'],
-                ['128825', 'thak00', '210', '-', '15']
-            ];
-            this.userItems.sort((a, b) => {
-                return parseInt(a[0]) - parseInt(b[0]);
+            axios.get('/api/all')
+            .then(res => {
+                return res.data.result;
+            })
+            .then(list => {
+                this.userItems = [];
+                list.sort((a, b) => {
+                    return parseInt(b.rating) - parseInt(a.rating);
+                });
+                for (let i = 0; i < list.length; ++i) {
+                    this.userItems.push(['?', list[i].handle, list[i].rating, list[i].solved_class, list[i].solve_count]);
+                }
+            })
+            .catch(err => {
+                console.log('err', err);
             });
         },
     },

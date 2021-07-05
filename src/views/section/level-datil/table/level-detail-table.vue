@@ -96,6 +96,13 @@ export default {
 .level-detail-table-body {
     tr {
         height: 44px;
+        &:hover {
+            z-index: 99999;
+            background-color: rgba(0, 0, 0, 0.3) !important;
+            td {
+                background: none !important;
+            }
+        }
     }
     td {
         padding: 8px 12px;
