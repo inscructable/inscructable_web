@@ -9,15 +9,20 @@ table.index-rank-table
             td
                 rntxt(:init_message="rkey + 1 + ` (${row[0]})`" :init_fontSize="16")
             td
+                img.tier-img(:src="`https://static.solved.ac/tier_small/${Util.getTier(parseInt(row[2]))}.svg`")
+                |&nbsp;
                 a.index-table-link(:href="`https://www.acmicpc.net/user/${row[1]}`")
                     rntxt(:init_message="row[1]" :init_fontSize="16")
-            td(v-for="(item, key) in row.slice(2)" :key="key")
+            td
+                rntxt(:init_message="row[2]" :init_fontSize="16" :init_color="$store.state.tierColor[Math.floor((Util.getTier(parseInt(row[2])) - 1) / 5)]")
+            td(v-for="(item, key) in row.slice(3)" :key="key")
                 rntxt(:init_message="item" :init_fontSize="16")
 </template>
 
 <script>
 import axios from 'axios';
 
+import Util from '../../../components/js/util.js';
 import rntxt from '../../../components/rntxt.vue';
 
 export default {
@@ -38,6 +43,7 @@ export default {
     },
     data: function() {
         return {
+            Util,
             userItems: [],
         };
     },
@@ -53,7 +59,7 @@ export default {
                     return parseInt(b.rating) - parseInt(a.rating);
                 });
                 for (let i = 0; i < list.length; ++i) {
-                    this.userItems.push(['?', list[i].handle, list[i].rating, list[i].solved_class, list[i].solve_count]);
+                    this.userItems.push([list[i].rank, list[i].handle, list[i].rating, list[i].solved_class, list[i].solve_count]);
                 }
             })
             .catch(err => {
@@ -120,5 +126,10 @@ export default {
         text-decoration: underline;
         text-decoration-color: #fdf3f3;
     }
+}
+.tier-img {
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: middle;
 }
 </style>
