@@ -7,9 +7,8 @@ section.level-detail-section
         rntxt.tier-label(v-else :init_message="$store.state.tierU" :init_fontSize="32" :init_color="$store.state.tierColorU")
     div.level-detail-table-wrapper
         level-detail-table(:init_level="level" :init_page="page" :init_items="items")
-    div.level-detail-pagination
-        button.level-detail-pagination-btn(v-for="(item, key) in otherPage" :key="key" @click="onClick(item)" :class="item == page ? 'disable' : ''")
-            rntxt(:init_message="item" :init_fontSize="22")
+    //- div.level-detail-pagination
+    //-     |pagination
 </template>
 
 <script>
@@ -30,22 +29,6 @@ export default {
             level: 0,
             items: [],
         };
-    },
-    computed: {
-        otherPage: function() {
-            let fibo = [1, 2, 4, 7];
-            let res = [];
-            if (this.page != 0) res.push(0);
-            for (let i = 4; i--; ) {
-                if (this.page - fibo[i] > 0) res.push(this.page - fibo[i]);
-            }
-            res.push(this.page);
-            for (let i = 0; i < 4; ++i) {
-                if (this.page + fibo[i] < parseInt(this.items.length / 50)) res.push(this.page + fibo[i]);
-            }
-            if (this.items.length >= 50 && this.page != parseInt(this.items.length / 50)) res.push(parseInt(this.items.length / 50));
-            return res;
-        }
     },
     methods: {
         setData: function() {
@@ -76,12 +59,6 @@ export default {
             .catch(err => {
                 console.log('err', err);
             });
-        },
-        onClick: function(newPage) {
-            if (this.page == newPage) return;
-            let pathname = window.location.pathname.split('/');
-            pathname[pathname.length - 1] = newPage;
-            window.location.href = pathname.join('/')
         },
     },
     created: function() {
@@ -119,20 +96,5 @@ export default {
     padding: 16px;
     text-align: right;
     box-sizing: border-box;
-}
-.level-detail-pagination-btn {
-    padding: 0;
-    width: 40px;
-    height: 40px;
-    border: none;
-    cursor: pointer;
-    background: none;
-    &:hover:not(.disable) {
-        background: rgba(0, 0, 0, 0.3);
-    }
-}
-.disable {
-    cursor: unset;
-    background-color: #35393b;
 }
 </style>
