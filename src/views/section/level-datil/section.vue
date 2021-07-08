@@ -41,9 +41,9 @@ export default {
             }
             res.push(this.page);
             for (let i = 0; i < 4; ++i) {
-                if (this.page + fibo[i] < parseInt(this.items.length - 1 / 50)) res.push(this.page + fibo[i]);
+                if (this.page + fibo[i] < parseInt((this.items.length - 1) / 50)) res.push(this.page + fibo[i]);
             }
-            if (this.items.length > 50 && this.page != parseInt(this.items.length - 1 / 50)) res.push(parseInt(this.items.length - 1 / 50));
+            if (this.items.length > 50 && this.page != parseInt((this.items.length - 1) / 50)) res.push(parseInt((this.items.length - 1) / 50));
             return res;
         }
     },
