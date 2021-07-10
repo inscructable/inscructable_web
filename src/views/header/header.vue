@@ -1,7 +1,9 @@
 <template lang="pug">
 header.rn-header
+    a.rn-back-link(v-if="pathname != '/' && innerWidth <= 720" @click="onClick")
+        div.rn-back
     a.rn-no-deco(href="/")
-        rntxt.rn-centre(init_message="inscrutable plus", :init_fontSize="30")
+        rntxt.rn-centre(init_message="inscrutable plus", :init_fontSize="28")
 </template>
 
 <script>
@@ -12,6 +14,29 @@ export default {
     components: {
         rntxt,
     },
+    data: function() {
+        return {
+            pathname: '/',
+            innerWidth: 0,
+        };
+    },
+    methods: {
+        onClick: function() {
+            window.history.back();
+        },
+        widthObserver: function() {
+            this.innerWidth = window.innerWidth;
+            this.pathname = window.location.pathname;
+        },
+    },
+    created: function() {
+        this.innerWidth = window.innerWidth;
+        this.pathname = window.location.pathname;
+        window.addEventListener('resize', this.widthObserver);
+    },
+    beforeDestroy: function(){
+        windos.removeEventListener('resize', this.widthObserver);
+    }
 }
 </script>
 
@@ -31,5 +56,23 @@ export default {
 }
 .rn-no-deco {
     text-decoration: none;
+}
+.rn-back {
+    width: 15px;
+    top: 15.25px;
+    height: 15px;
+    left: 15.25px;
+    position: absolute;
+    transform: rotate(-45deg);
+    border-top: #ececec 3px solid;
+    border-left: #ececec 3px solid;
+}
+.rn-back-link {
+    top: 0;
+    left: 0;
+    width: 51px;
+    height: 51px;
+    cursor: pointer;
+    position: absolute;
 }
 </style>
