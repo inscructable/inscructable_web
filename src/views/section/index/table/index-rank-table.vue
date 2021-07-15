@@ -20,8 +20,6 @@ table.index-rank-table
 </template>
 
 <script>
-import axios from 'axios';
-
 import Util from '../../../components/js/util.js';
 import rntxt from '../../../components/rntxt.vue';
 
@@ -29,6 +27,16 @@ export default {
     name: 'index-table',
     components: {
         rntxt,
+    },
+    props: {
+        init_userItems: {
+            default: [],
+        },
+    },
+    watch:  {
+        init_userItems: function() {
+            this.userItems = this.init_userItems;
+        },
     },
     computed: {
         headItems: function() {
@@ -44,31 +52,8 @@ export default {
     data: function() {
         return {
             Util,
-            userItems: [],
+            userItems: this.init_userItems,
         };
-    },
-    methods: {
-        setData: function() {
-            axios.get('/api/all')
-            .then(res => {
-                return res.data.result;
-            })
-            .then(list => {
-                this.userItems = [];
-                list.sort((a, b) => {
-                    return parseInt(b.rating) - parseInt(a.rating);
-                });
-                for (let i = 0; i < list.length; ++i) {
-                    this.userItems.push([list[i].rank, list[i].handle, list[i].rating, list[i].solved_class, list[i].solve_count]);
-                }
-            })
-            .catch(err => {
-                console.log('err', err);
-            });
-        },
-    },
-    created: function() {
-        this.setData();
     },
 }
 </script>
