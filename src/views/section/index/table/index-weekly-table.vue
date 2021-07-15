@@ -68,7 +68,7 @@ export default {
                 (idx => {
                     axios.get('/api/problem/weekly', {
                         params: {
-                            weekId: Math.floor((new Date() - 1624665600000) / 604800000) + 1,
+                            weekId: Math.floor((new Date() - 1624633200000) / 604800000) + 1,
                             handle: this.userInfo[idx].handle,
                         },
                     })

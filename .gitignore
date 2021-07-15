@@ -22,5 +22,7 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
+package-lock.json
+
 local_credentials.js
 credentials.js
